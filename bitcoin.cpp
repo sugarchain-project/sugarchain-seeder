@@ -86,7 +86,7 @@ class CNode {
   }
  
   void GotVersion() {
-    // printf("\n%s: version %i\n", ToString(you).c_str(), nVersion);
+    printf("\n%s: version %i\n", ToString(you).c_str(), nVersion);
     if (vAddr) {
       BeginMessage("getaddr");
       EndMessage();
@@ -133,7 +133,7 @@ class CNode {
     if (strCommand == "addr" && vAddr) {
       vector<CAddress> vAddrNew;
       vRecv >> vAddrNew;
-      // printf("%s: got %i addresses\n", ToString(you).c_str(), (int)vAddrNew.size());
+      printf("%s: got %i addresses\n", ToString(you).c_str(), (int)vAddrNew.size());
       int64 now = time(NULL);
       vector<CAddress>::iterator it = vAddrNew.begin();
       if (vAddrNew.size() > 1) {
@@ -172,13 +172,13 @@ class CNode {
       CMessageHeader hdr;
       vRecv >> hdr;
       if (!hdr.IsValid()) { 
-        // printf("%s: BAD (invalid header)\n", ToString(you).c_str());
+        printf("%s: BAD (invalid header)\n", ToString(you).c_str());
         ban = 100000; return true;
       }
       string strCommand = hdr.GetCommand();
       unsigned int nMessageSize = hdr.nMessageSize;
       if (nMessageSize > MAX_SIZE) { 
-        // printf("%s: BAD (message too large)\n", ToString(you).c_str());
+        printf("%s: BAD (message too large)\n", ToString(you).c_str());
         ban = 100000;
         return true; 
       }
@@ -242,11 +242,11 @@ public:
         vRecv.resize(nPos + nBytes);
         memcpy(&vRecv[nPos], pchBuf, nBytes);
       } else if (nBytes == 0) {
-        // printf("%s: BAD (connection closed prematurely)\n", ToString(you).c_str());
+        printf("%s: BAD (connection closed prematurely)\n", ToString(you).c_str());
         res = false;
         break;
       } else {
-        // printf("%s: BAD (connection error)\n", ToString(you).c_str());
+        printf("%s: BAD (connection error)\n", ToString(you).c_str());
         res = false;
         break;
       }
