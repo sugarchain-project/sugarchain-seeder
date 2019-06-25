@@ -17,7 +17,17 @@ REQUIREMENTS
 ------------
 
 ```bash
-$ sudo apt-get install build-essential libboost-all-dev libssl-dev
+sudo apt-get install build-essential libboost-all-dev libssl-dev
+```
+
+COMPILING
+---------
+Compiling will require boost and ssl.  On debian systems, these are provided
+by `libboost-dev` and `libssl-dev` respectively.
+
+This will produce the `dnsseed` binary.
+```bash
+make
 ```
 
 USAGE
@@ -55,14 +65,10 @@ Check if it works
 watch -n1 dig +short -t A seed-testnet.sugarchain.org @1.1.1.1
 ```
 
-COMPILING
----------
-Compiling will require boost and ssl.  On debian systems, these are provided
-by `libboost-dev` and `libssl-dev` respectively.
-
-$ make
-
-This will produce the `dnsseed` binary.
+Run Yumekawa node with
+```bash
+./src/qt/sugarchain-qt -testnet -server=1 -rpcuser=rpcuser -rpcpassword=rpcpassword -dns=1 -dnsseed=1 -forcednsseed=1 -listen=1
+```
 
 
 RUNNING AS NON-ROOT
