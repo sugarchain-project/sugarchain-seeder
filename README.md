@@ -1,4 +1,4 @@
-sugarchain-seeder
+SUGARCHAIN-SEEDER
 ==============
 
 Sugarchain-seeder is a crawler for the Sugarchain network, which exposes a list
@@ -16,26 +16,44 @@ Features:
 REQUIREMENTS
 ------------
 
+```bash
 $ sudo apt-get install build-essential libboost-all-dev libssl-dev
+```
 
 USAGE
 -----
 
-Assuming you want to run a dns seed on dnsseed.example.com, you will
-need an authorative NS record in example.com's domain record, pointing
-to for example vps.example.com:
+Assuming you want to run a dns seed on `seed-testnet.sugarchain.org`, you will
+need an authorative NS record in `sugarchain.org`'s domain record, pointing
+to for example `ns.sugarchain.org`:
 
-$ dig -t NS dnsseed.example.com
+```bash
+dig -t NS seed-testnet.sugarchain.org
+```
 
+```
 ;; ANSWER SECTION
-dnsseed.example.com.   86400    IN      NS     vps.example.com.
+seed-testnet.sugarchain.org. 19395 IN	NS	ns.sugarchain.org.
+```
 
-On the system vps.example.com, you can now run dnsseed:
+On the system `ns.sugarchain.org`, you can now run dnsseed with root privileged:
 
-./dnsseed -h dnsseed.example.com -n vps.example.com
+```bash
+sudo ./dnsseed --testnet -h seed-testnet.sugarchain.org -n ns.sugarchain.org -m sugarchain.dev.gmail.com
+```
 
 If you want the DNS server to report SOA records, please provide an
 e-mail address (with the @ part replaced by .) using -m.
+
+Check port 53 should be opened
+```bash
+sudo netstat -nulp | grep 53
+```
+
+Check if it works
+```bash
+watch -n1 dig +short -t A seed-testnet.sugarchain.org @1.1.1.1
+```
 
 COMPILING
 ---------
