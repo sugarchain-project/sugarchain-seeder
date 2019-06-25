@@ -11,20 +11,16 @@ Features:
 * very low memory (a few tens of megabytes) and cpu requirements.
 * crawlers run in parallel (by default 96 threads simultaneously).
 
-REQUIREMENTS
+INSTALLATION
 ------------
 
 ```bash
-sudo apt-get install build-essential libboost-all-dev libssl-dev
-```
-
-COMPILING
----------
-Compiling will require boost and ssl. On debian systems, these are provided by `libboost-dev` and `libssl-dev` respectively.
-
-This will produce the `dnsseed` binary.
-```bash
-make
+cd && \
+sudo apt-get update && \
+sudo apt-get install -y build-essential libboost-all-dev libssl-dev && \
+git clone https://github.com/sugarchain-project/sugarchain-seeder.git && \
+cd sugarchain-seeder && \
+make -j$(nproc)
 ```
 
 USAGE
