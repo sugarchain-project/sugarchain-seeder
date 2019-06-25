@@ -1,15 +1,13 @@
 SUGARCHAIN-SEEDER
 ==============
 
-Sugarchain-seeder is a crawler for the Sugarchain network, which exposes a list
-of reliable nodes via a built-in DNS server.
+Sugarchain-seeder is a crawler for the Sugarchain network, which exposes a list of reliable nodes via a built-in DNS server.
 
 Features:
 * regularly revisits known nodes to check their availability
 * bans nodes after enough failures, or bad behaviour
-* accepts nodes from Yumekawa v0.16.3.x to request new IP addresses.
-* keeps statistics over (exponential) windows of 2 hours, 8 hours,
-  1 day and 1 week, to base decisions on.
+* accepts nodes from Yumekawa v0.16.3.x (protocol version `70015`) to request new IP addresses.
+* keeps statistics over (exponential) windows of 2 hours, 8 hours, 1 day and 1 week, to base decisions on.
 * very low memory (a few tens of megabytes) and cpu requirements.
 * crawlers run in parallel (by default 96 threads simultaneously).
 
@@ -22,8 +20,7 @@ sudo apt-get install build-essential libboost-all-dev libssl-dev
 
 COMPILING
 ---------
-Compiling will require boost and ssl.  On debian systems, these are provided
-by `libboost-dev` and `libssl-dev` respectively.
+Compiling will require boost and ssl. On debian systems, these are provided by `libboost-dev` and `libssl-dev` respectively.
 
 This will produce the `dnsseed` binary.
 ```bash
@@ -33,9 +30,7 @@ make
 USAGE
 -----
 
-Assuming you want to run a dns seed on `seed-testnet.sugarchain.org`, you will
-need an authorative NS record in `sugarchain.org`'s domain record, pointing
-to for example `ns.sugarchain.org`:
+Assuming you want to run a dns seed on `seed-testnet.sugarchain.org`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `ns.sugarchain.org`:
 
 ```bash
 dig -t NS seed-testnet.sugarchain.org
@@ -52,8 +47,7 @@ On the system `ns.sugarchain.org`, you can now run dnsseed with root privileged:
 sudo ./dnsseed --testnet -h seed-testnet.sugarchain.org -n ns.sugarchain.org -m sugarchain.dev.gmail.com
 ```
 
-If you want the DNS server to report SOA records, please provide an
-e-mail address (with the @ part replaced by .) using -m.
+If you want the DNS server to report SOA records, please provide an e-mail address (with the @ part replaced by .) using -m.
 
 Check port 53 should be opened
 ```bash
