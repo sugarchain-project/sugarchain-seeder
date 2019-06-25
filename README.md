@@ -41,8 +41,7 @@ dig -t NS seed-testnet.sugarchain.org
 seed-testnet.sugarchain.org. 19395 IN	NS	ns.sugarchain.org.
 ```
 
-On the system `ns.sugarchain.org`, you can now run dnsseed with root privileged:
-
+On the system `ns.sugarchain.org`, you can now run dnsseed with root privileged to use port 53
 ```bash
 sudo ./dnsseed --testnet -h seed-testnet.sugarchain.org -n ns.sugarchain.org -m sugarchain.dev.gmail.com
 ```
