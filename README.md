@@ -30,20 +30,20 @@ make
 USAGE
 -----
 
-Assuming you want to run a dns seed on `seed-testnet.sugarchain.org`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `ns.sugarchain.org`:
+Assuming you want to run a dns seed on `seed-testnet.sugarchain.org`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `ns-testnet.sugarchain.org`:
 
 ```bash
 dig -t NS seed-testnet.sugarchain.org
 ```
 
 ```
-;; ANSWER SECTION
-seed-testnet.sugarchain.org. 19395 IN	NS	ns.sugarchain.org.
+;; ANSWER SECTION:
+seed-testnet.sugarchain.org. 21599 IN	NS	ns-testnet.sugarchain.org.
 ```
 
 On the system `ns.sugarchain.org`, you can now run dnsseed with root privileged to use port 53
 ```bash
-sudo ./dnsseed --testnet -h seed-testnet.sugarchain.org -n ns.sugarchain.org -m sugarchain.dev.gmail.com
+sudo ./dnsseed --testnet -h seed-testnet.sugarchain.org -n ns-testnet.sugarchain.org -m sugarchain.dev.gmail.com
 ```
 
 If you want the DNS server to report SOA records, please provide an e-mail address (with the @ part replaced by .) using -m.
@@ -60,19 +60,17 @@ watch -n1 dig +short -t A seed-testnet.sugarchain.org @1.1.1.1
 
 Run Yumekawa node with
 ```bash
-./src/qt/sugarchain-qt -testnet -server=1 -rpcuser=rpcuser -rpcpassword=rpcpassword -dns=1 -dnsseed=1 -forcednsseed=1 -listen=1
+./src/sugarchaind -testnet -dns=1 -dnsseed=1 -forcednsseed=1 -listen=1 -daemon
 ```
 
 
 RUNNING AS NON-ROOT
 -------------------
 
-Typically, you'll need root privileges to listen to port 53 (name service).
+Typically, you'll need root privileges to listen to port 53 (name service). One solution is using an iptables rule (Linux only) to redirect it to a non-privileged port:
 
-One solution is using an iptables rule (Linux only) to redirect it to
-a non-privileged port:
+```bash
+iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
+```
 
-$ iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
-
-If properly configured, this will allow you to run dnsseed in userspace, using
-the -p 5353 option.
+If properly configured, this will allow you to run dnsseed in userspace, using the -p 5353 option.
