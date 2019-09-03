@@ -74,7 +74,7 @@ Run Sugarchain node on another computer
 
 CRON
 ----
-Adding following command with `sudo crontab -e` as `@reboot`. On amazon AWS EC2, run with `crontab -e` (without sudo because the username is ubuntu)
+Adding the following command with `sudo crontab -e` as `@reboot`. On amazon AWS EC2, run with `crontab -e` (without sudo because the username is ubuntu)
 
 `1seed-testnet.cryptozeny.com`
 ```bash
@@ -84,7 +84,7 @@ Adding following command with `sudo crontab -e` as `@reboot`. On amazon AWS EC2,
 RUNNING AS NON-ROOT
 -------------------
 
-Typically, you'll need root privileges to listen to port 53 (name service). One solution is using an iptables rule (Linux only) to redirect it to a non-privileged port:
+Typically, you will need root privileges to listen to port 53 (name service). One solution is using an iptables rule (Linux only) to redirect it to a non-privileged port:
 
 ```bash
 iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
