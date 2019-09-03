@@ -74,7 +74,7 @@ Run Sugarchain node on another computer
 
 CRON
 ----
-Adding following command with `sudo crontab -e` as `@reboot`. On amazon AWS EC2, run with `crontab -e` (without sudo because the username is ubuntu)
+Adding the following command with `sudo crontab -e` as `@reboot`. On amazon AWS EC2, run with `crontab -e` (without sudo because the username is ubuntu)
 
 `1seed-testnet.cryptozeny.com`
 ```bash
