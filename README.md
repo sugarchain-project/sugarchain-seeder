@@ -39,7 +39,7 @@ USAGE
 
 On the system `1ns.sugarchain.info`, you can now run dnsseed with root privileged to use port 53 (`UDP`)
 ```bash
-sudo ./dnsseed --testnet -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
+sudo ./dnsseed -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
 ```
 
 Assuming you want to run a dns seed on `1seed.sugarchain.info`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `1ns.sugarchain.info`:
@@ -78,7 +78,7 @@ Adding the following command with `sudo crontab -e` as `@reboot`. On amazon AWS 
 
 `1seed.sugarchain.info`
 ```bash
-@reboot sudo $HOME/sugarchain-seeder/dnsseed --testnet -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
+@reboot sudo $HOME/sugarchain-seeder/dnsseed -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
 ```
 
 RUNNING AS NON-ROOT
