@@ -37,20 +37,20 @@ sudo netstat -nulp | grep 53
 USAGE
 -----
 
-On the system `1ns-testnet.cryptozeny.com`, you can now run dnsseed with root privileged to use port 53 (`UDP`)
+On the system `1ns.sugarchain.info`, you can now run dnsseed with root privileged to use port 53 (`UDP`)
 ```bash
-sudo ./dnsseed --testnet -h 1seed-testnet.cryptozeny.com -n 1ns-testnet.cryptozeny.com -m cryptozeny.gmail.com
+sudo ./dnsseed --testnet -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
 ```
 
-Assuming you want to run a dns seed on `1seed-testnet.cryptozeny.com`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `1ns-testnet.cryptozeny.com`:
+Assuming you want to run a dns seed on `1seed.sugarchain.info`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `1ns.sugarchain.info`:
 
 ```bash
-dig -t NS 1seed-testnet.cryptozeny.com
+dig -t NS 1seed.sugarchain.info
 ```
 
 ```
 ;; ANSWER SECTION:
-1seed-testnet.cryptozeny.com. 21599 IN	NS	1ns-testnet.cryptozeny.com.
+1seed.sugarchain.info. 21599 IN	NS	1ns.sugarchain.info.
 ```
 
 If you want the DNS server to report SOA records, please provide an e-mail address (with the `@` part replaced by `.`) using `-m`.
@@ -64,7 +64,7 @@ udp6       0      0 :::53                   :::*                                
 
 Check if it works
 ```bash
-watch -n1 dig +short -t A 1seed-testnet.cryptozeny.com @1.1.1.1
+watch -n1 dig +short -t A 1seed.sugarchain.info @1.1.1.1
 ```
 
 Run Sugarchain node on another computer
@@ -76,9 +76,9 @@ CRON
 ----
 Adding the following command with `sudo crontab -e` as `@reboot`. On amazon AWS EC2, run with `crontab -e` (without sudo because the username is ubuntu)
 
-`1seed-testnet.cryptozeny.com`
+`1seed.sugarchain.info`
 ```bash
-@reboot sudo $HOME/sugarchain-seeder/dnsseed --testnet -h 1seed-testnet.cryptozeny.com -n 1ns-testnet.cryptozeny.com -m cryptozeny.gmail.com
+@reboot sudo $HOME/sugarchain-seeder/dnsseed --testnet -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
 ```
 
 RUNNING AS NON-ROOT
