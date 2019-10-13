@@ -78,7 +78,15 @@ Adding the following command with `sudo crontab -e` as `@reboot`. On amazon AWS 
 
 `1seed.sugarchain.info`
 ```bash
+# dnsseed for sugarchain (mainnet)
 @reboot sudo $HOME/sugarchain-seeder/dnsseed -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
+```
+
+(Optional) Reboot frequently (1)
+```
+# reboot every week on Monday(1) 01:01
+# Minute | Hour | Day | Month | Day(Week) 
+1 1 * * 1 sudo /sbin/shutdown -r now
 ```
 
 RUNNING AS NON-ROOT
