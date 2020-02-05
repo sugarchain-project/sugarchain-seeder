@@ -400,11 +400,12 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"1explorer.sugarchain.org",
-                                       // "2explorer.sugarchain.org",
+static const string mainnet_seeds[] = {// "1explorer.sugarchain.org",
                                        // "1pool.sugarchain.org",
                                        // "2pool.sugarchain.org",
-                                       "1node.sugarchain.org",
+                                       // "1node.sugarchain.org",
+                                       "1seed.sugarchain.info",
+                                       "2seed.sugarchain.info",
                                        ""};
 
 static const string testnet_seeds[] = {// "1explorer-testnet.cryptozeny.com",
