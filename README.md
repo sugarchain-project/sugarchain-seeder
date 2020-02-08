@@ -86,7 +86,7 @@ Adding the following command with `sudo crontab -e` as `@reboot`. On amazon AWS 
 ```
 # reboot every week on Monday(1) 01:01
 # Minute | Hour | Day | Month | Day(Week) 
-1 1 * * 1 sudo /sbin/shutdown -r now
+1 1 * * MON sudo /sbin/shutdown -r now
 ```
 
 RUNNING AS NON-ROOT
