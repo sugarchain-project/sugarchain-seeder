@@ -42,7 +42,7 @@ On the system `1ns.sugarchain.info`, you can now run dnsseed with root privilege
 sudo ./dnsseed -h 1seed.sugarchain.info -n 1ns.sugarchain.info -m cryptozeny.gmail.com
 ```
 
-Assuming you want to run a dns seed on `1seed.sugarchain.info`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `1ns.sugarchain.info`:
+Assuming you want to run a dns seed on `1seed.sugarchain.info`, you will need an authorative NS record in `sugarchain.org`'s domain record, pointing to for example `1ns.sugarchain.info`. Set DNS TTL as `86400 (1 Day)` or Automatic.
 
 ```bash
 dig -t NS 1seed.sugarchain.info
@@ -99,3 +99,7 @@ iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-port 5353
 ```
 
 If properly configured, this will allow you to run dnsseed in userspace, using the -p 5353 option.
+
+RESOURCE
+--------
+- https://github.com/team-exor/generic-seeder/blob/master/SETUP.md
