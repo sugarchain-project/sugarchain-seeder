@@ -69,7 +69,7 @@ watch -n1 dig +short -t A 1seed.sugarchain.info @1.1.1.1
 
 Run Sugarchain node on another computer
 ```bash
-./src/sugarchaind -testnet -dns=1 -dnsseed=1 -forcednsseed=1 -listen=1 -daemon
+./src/sugarchaind -dns=1 -dnsseed=1 -forcednsseed=1 -listen=1
 ```
 
 CRON
